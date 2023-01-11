@@ -103,6 +103,13 @@ class BaseCalendar(object):
         :return: int, number of days in the given month of the given year
         """
 
+        if not isinstance(year, int) or not isinstance(month, int):
+            raise TypeError("'year' and 'month' must be of type 'int'")
+        if not 1 <= month <= 12:
+            raise ValueError("month must be between 1 and 12")
+        if not 12 <= year <= 2100:
+            raise ValueError("year must be between 12 and 2100")
+
         days_in_year = self.get_month_days_in_year(year)
         days_in_month = days_in_year[month-1]
         return days_in_month
