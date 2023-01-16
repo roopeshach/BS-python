@@ -174,10 +174,3 @@ class BaseCalendar(object):
 
         return "%04d-%02d-%02d" % (self.year, self.month, self.day)
 
-
-# date = BaseCalendar(2017, 12, 31)
-# print(date.to_string())
-# date.add_delta(1)
-# print(date.to_string())
-# date.reduce_delta(1)
-# print(date.to_string())

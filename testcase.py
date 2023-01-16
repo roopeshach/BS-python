@@ -137,7 +137,7 @@ class TestBaseCalendar(unittest.TestCase):
         self.assertEqual(date.month, 3)
         self.assertEqual(date.day, 28)
         #add 1 month to the date
-        date.add_delta_month(1)
+        date.add_delta(1)
         #check if the date is 2017, 4, 28
         self.assertEqual(date.year, 2017)
         self.assertEqual(date.month, 4)
@@ -149,13 +149,13 @@ class TestBaseCalendar(unittest.TestCase):
         self.assertEqual(date.month, 5)
         self.assertEqual(date.day, 28)
         #add 1 month to the date
-        date.add_delta_month(1)
+        date.add_delta(1)
         #check if the date is 2017, 6, 28
         self.assertEqual(date.year, 2017)
         self.assertEqual(date.month, 6)
         self.assertEqual(date.day, 28)
         #add 1 month to the date
-        date.add_delta_month(1)
+        date.add_delta(1)
         #check if the date is 2017, 7, 28
         self.assertEqual(date.year, 2017)
         self.assertEqual(date.month, 7)
@@ -170,49 +170,49 @@ class TestBaseCalendar(unittest.TestCase):
         #create a BaseCalendar object
         date = BaseCalendar(2017, 1, 31)
         #reduce 1 month to the date
-        date.reduce_delta_month(1)
+        date.reduce_delta(1)
         #check if the date is 2016, 12, 31
         self.assertEqual(date.year, 2016)
         self.assertEqual(date.month, 12)
         self.assertEqual(date.day, 31)
         #reduce 1 month to the date
-        date.reduce_delta_month(1)
+        date.reduce_delta(1)
         #check if the date is 2016, 11, 30
         self.assertEqual(date.year, 2016)
         self.assertEqual(date.month, 11)
         self.assertEqual(date.day, 30)
         #reduce 1 month to the date
-        date.reduce_delta_month(1)
+        date.reduce_delta(1)
         #check if the date is 2016, 10, 31
         self.assertEqual(date.year, 2016)
         self.assertEqual(date.month, 10)
         self.assertEqual(date.day, 31)
         #reduce 1 month to the date
-        date.reduce_delta_month(1)
+        date.reduce_delta(1)
         #check if the date is 2016, 9, 30
         self.assertEqual(date.year, 2016)
         self.assertEqual(date.month, 9)
         self.assertEqual(date.day, 30)
         #reduce 1 month to the date
-        date.reduce_delta_month(1)
+        date.reduce_delta(1)
         #check if the date is 2016, 8, 31
         self.assertEqual(date.year, 2016)
         self.assertEqual(date.month, 8)
         self.assertEqual(date.day, 31)
         #reduce 1 month to the date
-        date.reduce_delta_month(1)
+        date.reduce_delta(1)
         #check if the date is 2016, 7, 31
         self.assertEqual(date.year, 2016)
         self.assertEqual(date.month, 7)
         self.assertEqual(date.day, 31)
         #reduce 1 month to the date
-        date.reduce_delta_month(1)
+        date.reduce_delta(1)
         #check if the date is 2016, 6, 30
         self.assertEqual(date.year, 2016)
         self.assertEqual(date.month, 6)
         self.assertEqual(date.day, 30)
         #reduce 1 month to the date
-        date.reduce_delta_month(1)
+        date.reduce_delta(1)
 
 
 obj = TestBaseCalendar()
@@ -220,4 +220,3 @@ obj.test_add_delta()
 obj.test_reduce_delta()
 obj.test_add_delta_month()
 obj.test_reduce_delta_month()
-        
