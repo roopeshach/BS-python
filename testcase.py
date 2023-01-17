@@ -1,5 +1,8 @@
 from BaseCalendar import BaseCalendar
 import unittest
+from .ADCalendar import ADCalendar
+from .BSCalendar import BSCalendar
+
 #create tests for BaseCalendar
 
 class TestBaseCalendar(unittest.TestCase):
