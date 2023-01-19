@@ -2,6 +2,8 @@ from BaseCalendar import BaseCalendar
 import unittest
 from .ADCalendar import ADCalendar
 from .BSCalendar import BSCalendar
+from datetime import date
+from .wrappers import bsdate, addate
 
 #create tests for BaseCalendar
 
@@ -223,3 +225,66 @@ obj.test_add_delta()
 obj.test_reduce_delta()
 obj.test_add_delta_month()
 obj.test_reduce_delta_month()
+
+
+class bsdateTestCase(unittest.TestCase):
+
+    obj = bsdate(2073, 1, 1)
+
+    def test_strftime(self):
+        self.assertEqual(self.obj.strftime('%Y-%m-%d'), '2073-01-01')
+
+    def test_strptime(self):
+        self.assertEqual(bsdate.strptime('2073-01-01', '%Y-%m-%d'), self.obj)
+
+    def test_addate(self):
+        self.assertEqual(self.obj.addate(1), bsdate(2073, 1, 2))
+
+    def test_isoformat(self):
+        self.assertEqual(self.obj.isoformat(), '2073-01-01')
+
+    def test_fromdateobj(self):
+        self.assertEqual(bsdate.fromdateobj(date(2016, 12, 31)), bsdate(2073, 1, 1))
+
+    def test_replace(self):
+        self.assertEqual(self.obj.replace(year=2074), bsdate(2074, 1, 1))
+        self.assertEqual(self.obj.replace(year=2074, month=10, day=None), bsdate(2074, 1, 1))
+
+    def test_today(self):
+        self.assertEqual(bsdate.today(), bsdate.fromdateobj(date.today()))
+
+    def test_add_delta(self):
+        self.assertEqual(self.obj.add_delta(1), bsdate(2073, 1, 2))
+        self.assertEqual(self.obj.add_delta(1, 1), bsdate(2073, 2, 2))
+        self.assertEqual(self.obj.add_delta(1, 1, 1), bsdate(2073, 2, 3))
+
+    def test_reduce_delta(self):
+        self.assertEqual(self.obj.reduce_delta(1), bsdate(2072, 12, 31))
+        self.assertEqual(self.obj.reduce_delta(1, 1), bsdate(2072, 11, 30))
+        self.assertEqual(self.obj.reduce_delta(1, 1, 1), bsdate(2072, 11, 29))
+
+
+testobj = bsdateTestCase()
+testobj.test_strftime()
+testobj.test_strptime()
+testobj.test_addate()
+testobj.test_isoformat()
+testobj.test_fromdateobj()
+testobj.test_replace()
+testobj.test_today()
+testobj.test_add_delta()
+testobj.test_reduce_delta()
+
+class addateTestCase(unittest.TestCase):
+
+    def test_bsdate(self):
+        self.assertEqual(addate(2073, 1, 1), bsdate(2073, 1, 1))
+        self.assertEqual(addate(2075, 10, 21), bsdate(2071, 51, 51))
+
+        
+
+testobj = addateTestCase()
+testobj.test_bsdate()
+
+
+
